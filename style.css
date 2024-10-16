@@ -1,0 +1,17 @@
+.bus_add{
+	margin-top: -5%;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+.main_ticket{
+	background: #F7F8F8;
+}
+.text_l{
+	text-align: left;
+}
+.text_r{
+	text-align: right;
+}
+.bg_dark{
+	background-color: #000;
+}
