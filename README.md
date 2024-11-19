@@ -57,8 +57,8 @@ The system is built using PHP for the backend, MySQL for database management, an
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/ticket-management-admin-panel.git
-   cd ticket-management-admin-panel
+   git clone [https://github.com/your-username/ticket-management-admin-panel.git](https://github.com/skb461/Ticket_demo.git)
+   cd Ticket_demo
    ```
 
 2. Import the database:
@@ -86,21 +86,28 @@ The system is built using PHP for the backend, MySQL for database management, an
 ```plaintext
 ticket-management-admin-panel/
 │
-├── app.js                # JavaScript logic for UI functionality
-├── connection.php        # Database connection script
-├── index.php             # Entry point with admin login
-├── admin_panel.php       # Admin dashboard and data visualization
-├── login.php             # Login handling
-├── signup.php            # User registration
-├── ticket_history.php    # User ticket history
-├── save_ticket.php       # Script to handle ticket bookings
-├── style.css             # Custom styling
-├── ln_database.sql       # SQL file to initialize the database
+├── app.js
+├── connection.php
+├── index.php
+├── admin_panel.php
+├── login.php
+├── logout.php
+├── signup.php
+├── ticket_history.php
+├── save_ticket.php
+├── style.css
+├── ln_database.sql
+├── websiteImage(Iamge folder) 
+├── rick.png 
 ```
 
 ---
 
 ## Screenshots
+![Main Web site view](image/2.png)
+![ ](image/1.png)
+![Admin Dashboard](image/3.png)
+
 
 ### **Admin Login Page:**
 Secure login interface for administrators.
