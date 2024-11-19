@@ -1,8 +1,16 @@
-Here is the complete and detailed `README.md` file for your project:
 
----
+## Table of Contents
 
-# Admin Panel for Ticket Management System
+- [Overview](#overview)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Project Structure](#project-structure)
+- [Screenshots](#screenshots)
+- [Database Schema](#database-schema)
+- [License](#license)
+- [Contributions](#contributions)
+
 
 ## Overview
 
@@ -104,10 +112,6 @@ ticket-management-admin-panel/
 ---
 
 ## Screenshots
-![Main Web site view](image/2.png)
-![ ](image/1.png)
-![Admin Dashboard](image/3.png)
-
 
 ### **Admin Login Page:**
 Secure login interface for administrators.
@@ -117,6 +121,10 @@ Graphs showing purchase data and ticket status trends.
 
 ### **Ticket Management:**
 Interactive interface for approving or canceling tickets.
+
+![Main Web site view](image/2.png)
+![ ](image/1.png)
+![Admin Dashboard](image/3.png)
 
 ---
 
@@ -130,24 +138,19 @@ Interactive interface for approving or canceling tickets.
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2024 at 01:37 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 --
 -- Database: `ln_database`
 --
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `admins`
 --
-
 CREATE TABLE `admins` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -158,11 +161,9 @@ INSERT INTO `admins` (`id`, `username`, `password`) VALUES
 (1, 'admin', 'admin123');
 
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `ln_information`
 --
-
 CREATE TABLE `ln_information` (
   `ln_id` varchar(100) NOT NULL,
   `ln_mail` varchar(500) DEFAULT NULL,
@@ -176,11 +177,9 @@ INSERT INTO `ln_information` (`ln_id`, `ln_mail`, `ln_password`, `ln_phn`) VALUE
 ('urmi', 'urmi@gmail.com', '1234', '01521366612');
 
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `ticket_purchases`
 --
-
 CREATE TABLE `ticket_purchases` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
@@ -219,6 +218,3 @@ Contributions are welcome! Follow these steps to contribute:
 
 Enjoy building with this project! Happy coding! 🎉
 
---- 
-
-Let me know if you want any further customizations.
