@@ -1,3 +1,6 @@
+# Ticket Management System
+
+The Admin Panel for Ticket Management System is a web-based application designed to streamline ticket booking management for bus services. It enables administrators to approve, cancel, and track ticket purchases efficiently while visualizing data trends through interactive graphs. Key features include secure admin login, a user-friendly dashboard, real-time status updates (Approved, Canceled, Waiting), and insightful analytics on user purchases and daily revenue. Built with PHP, MySQL, and Chart.js, it offers a responsive, scalable, and data-driven solution for ticket management.
 
 ## Table of Contents
 
