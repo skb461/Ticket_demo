@@ -1,102 +1,123 @@
-//all ticket button
-let ticketBtns = document.querySelectorAll('.seatPosition')
+// All ticket buttons
+let ticketBtns = document.querySelectorAll('.seatPosition');
 
-//ticket showing table
-let ticketInfoTable = document.querySelector('.ticake_info_table')
+// Ticket showing table
+let ticketInfoTable = document.querySelector('.ticake_info_table');
 
-//total amount display
-let totalAmoutDisplay = document.querySelector('.totalAmount')
+// Total amount display
+let totalAmoutDisplay = document.querySelector('.totalAmount');
 
-//grand total 
-let grandTotalDisplay = document.querySelector('.grandTotal')
+// Grand total display
+let grandTotalDisplay = document.querySelector('.grandTotal');
 
-//ticket price
+// Ticket price
 let ticketprice = 550;
 
-//initial total ticket price
-let totalAmount=0;
+// Initial total ticket price
+let totalAmount = 0;
 
-//initial check ticket
-let previous_name=0;
+// Initial check ticket
+let previous_name = 0;
 
-//initial flag
+// Initial flag
 let flag = 0;
 
 let seatsLeft = 40;
 
+// Hidden grand total input
+let totalAmountInput = document.getElementById('totalAmountInput');
 
-//clicking all ticket btn
-ticketBtns.forEach((ticketBtn)=>{
-    ticketBtn.addEventListener('click',()=>{
+// Clicking all ticket buttons
+ticketBtns.forEach((ticketBtn) => {
+    ticketBtn.addEventListener('click', () => {
+        if (flag < 4) {
+            // Adding price to current amount
+            totalAmount = totalAmount + ticketprice;
 
-        if (flag < 4){
-            //adding price to current amount
-            totalAmount=totalAmount+ticketprice;
+            // Update displays
+            grandTotalDisplay.textContent = totalAmount;
+            totalAmountInput.value = totalAmount; // Update hidden input field
 
-            grandTotalDisplay.textContent=totalAmount;
+            ticketBtn.className = 'btn btn-success py-3 px-5 mx-4 seatPosition';
 
-            ticketBtn.className='btn btn-success py-3 px-5 mx-4 seatPosition'
-
-            seatsLeft = seatsLeft-1;
-            document.getElementById("SeatsLeft").innerText = seatsLeft;
+            seatsLeft = seatsLeft - 1;
+            document.getElementById('SeatsLeft').innerText = seatsLeft;
         } else {
-            if (ticketBtn.className == 'btn btn-success py-3 px-5 mx-4 seatPosition'){
-                ticketBtn.className = 'btn btn-success py-3 px-5 mx-4 seatPosition'
+            if (ticketBtn.className == 'btn btn-success py-3 px-5 mx-4 seatPosition') {
+                ticketBtn.className = 'btn btn-success py-3 px-5 mx-4 seatPosition';
             } else {
-                ticketBtn.className='btn btn-secondary py-3 px-5 mx-4 seatPosition'
+                ticketBtn.className = 'btn btn-secondary py-3 px-5 mx-4 seatPosition';
             }
         }
 
-        //getting seat number
-        let seatName = ticketBtn.textContent
+        // Getting seat number
+        let seatName = ticketBtn.textContent;
 
-        //adding booked ticket to table
-        bookingTicket(seatName,ticketprice)
+        // Adding booked ticket to table
+        bookingTicket(seatName, ticketprice);
 
-        //changing the total amount on table
-        totalAmoutDisplay.textContent=totalAmount;
-    })
-})
+        // Changing the total amount on the table
+        totalAmoutDisplay.textContent = totalAmount;
+    });
+});
 
-//cupone total discount
+// Coupon total discount
 function myFunction() {
     let cuponeTotalDiscount = document.getElementById("coupne").value;
 
-    //changing the grand total
+    // Changing the grand total
     if (cuponeTotalDiscount == "NEW15") {
-        grandTotalDisplay.textContent=totalAmount-((totalAmount*15)/100);
+        let discountedTotal = totalAmount - ((totalAmount * 15) / 100);
+        grandTotalDisplay.textContent = discountedTotal;
+        totalAmountInput.value = discountedTotal; // Update hidden input field
     } else if (cuponeTotalDiscount == "Couple20") {
-        grandTotalDisplay.textContent=totalAmount-((totalAmount*20)/100);
+        let discountedTotal = totalAmount - ((totalAmount * 20) / 100);
+        grandTotalDisplay.textContent = discountedTotal;
+        totalAmountInput.value = discountedTotal; // Update hidden input field
     } else {
-        grandTotalDisplay.textContent=totalAmount;
+        grandTotalDisplay.textContent = totalAmount;
+        totalAmountInput.value = totalAmount; // Update hidden input field
     }
 }
 
-//booking ticket
-function bookingTicket(seatName,price){
+// Booking ticket
+function bookingTicket(seatName, price) {
     if (previous_name == seatName) {
         alert("Wrong Ticket Already Booked!!\nTry Another One.");
     } else {
-        if (flag < 4){
-            //creating tr
-            let tr = document.createElement('tr')
+        if (flag < 4) {
+            // Creating tr
+            let tr = document.createElement('tr');
 
-            //adding table class list
-            tr.className='table bg-transparent'
+            // Adding table class list
+            tr.className = 'table bg-transparent';
 
-            //data in td
-            tr.innerHTML=`<td class="bg-transparent">${seatName}</td>
-            <td class="bg-transparent">Economoy</td>
-            <td class="bg-transparent">${price}</td>`
+            // Data in td
+            tr.innerHTML = `<td class="bg-transparent">${seatName}</td>
+            <td class="bg-transparent">Economy</td>
+            <td class="bg-transparent">${price}</td>`;
 
-            //adding tr-data to table
-            ticketInfoTable.appendChild(tr)
+            // Adding tr-data to table
+            ticketInfoTable.appendChild(tr);
 
             previous_name = seatName;
 
             flag++;
         } else {
-            alert("You have select more then four seats!!");
+            alert("You have selected more than four seats!!");
         }
     }
+}
+
+// Submit form function
+function submitForm() {
+    let selectedSeats = [];
+    document.querySelectorAll('.btn-success.seatPosition').forEach((seat) => {
+        selectedSeats.push(seat.textContent.trim());
+    });
+
+
+    // Populate hidden fields
+    document.getElementById('seatsInput').value = selectedSeats.join(',');
+    totalAmountInput.value = grandTotalDisplay.textContent.trim(); // Ensure the grand total is updated
 }
